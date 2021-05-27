@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+
+Blog details
+
+{% endblock %}
+
+{% block content %}
+
+{% include 'blog/flash.html' %}
+
+<div class="row mt-3 pb-2 pt-3">
+
+{% include 'blog/list_inline.html' with blog_post=object details=True %}
+
+{% if request.user.is_authenticated %}
+    {% if request.user.is_staff %}
+    <div class="col-12">
+        <a href="{{ object.get_edit_url }}"><button class="btn btn-success ml-3">Edit</button></a>
+        <a href="{{ object.get_delete_url }}"><button class="btn btn-danger">Delete</button></a>
+    </div>
+    {% endif %}
+{% endif %}
+
+</div>
+{% endblock %}

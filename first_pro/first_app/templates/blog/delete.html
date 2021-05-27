@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+
+Delete
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row mt-3 pb-2 pt-3">
+
+
+<h1>Are you sure you want to delete the following :</h1>    
+
+{% include 'blog/list_inline.html' with blog_post=object details=True %}
+
+<form class="pb-2" action="" method="POST">
+    {% csrf_token %}
+    <button class="btn btn-danger">Delete</button>
+
+</form>
+</div>
+{% endblock %}
